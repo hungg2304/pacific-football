@@ -34,6 +34,44 @@
     }
     a { text-decoration: none; color: inherit; }
     .line-through-price { text-decoration: line-through; color: #9a9a9a; }
+
+    @media (max-width: 640px) {
+      /* Hero */
+      .hero-img { height: 260px !important; }
+      .hero-frame { display: none !important; }
+      .hero-text { bottom: 40px !important; left: 16px !important; right: 90px; }
+      .hero-text h1 { font-size: 22px !important; }
+      .hero-btn { bottom: 44px !important; right: 12px !important; font-size: 10px !important; }
+
+      /* Activities */
+      .activities-section { padding: 24px 16px !important; }
+      .activities-outer { flex-direction: column !important; gap: 16px !important; }
+      .activities-label { width: 100% !important; }
+      .activities-label h2 { font-size: 22px !important; }
+      .activities-cards { flex-direction: column !important; }
+      .activity-card { border-right: none !important; border-bottom: 1px solid #d9d4c3; }
+      .activity-card:last-child { border-bottom: none; }
+      .activity-card .card-img-wrap { aspect-ratio: 16/9 !important; }
+
+      /* Dark split section */
+      .dark-section { flex-direction: column !important; }
+      .dark-section-img-wrap { width: 100% !important; }
+      .dark-section-img { min-height: 240px !important; }
+      .dark-section-text { width: 100% !important; padding: 32px 24px !important; }
+      .dark-section-text h2 { font-size: 20px !important; }
+
+      /* Categories */
+      .categories-grid { grid-template-columns: 1fr !important; }
+      .category-tile { border-right: none !important; min-height: 200px !important; border-bottom: 1px solid #3d1a1a; }
+      .category-tile:last-child { border-bottom: none; }
+      .category-tile h3 { font-size: 16px !important; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column !important; gap: 24px !important; }
+      .footer-left { width: 100% !important; }
+      .footer-right { align-items: flex-start !important; padding-top: 0 !important; }
+      .footer-legal { text-align: left !important; margin-top: 16px !important; }
+    }
   </style>
 </head>
 <body>
@@ -66,7 +104,7 @@
     </div>
 
     <!-- Navigation bar -->
-    <nav class="bg-cream flex justify-center gap-10 py-2.5">
+    <nav class="bg-cream flex justify-center gap-6 py-2.5 flex-wrap">
       <a href="#" style="font-size:11px; letter-spacing:0.14em;" class="uppercase text-dark hover:opacity-60">Football</a>
       <a href="#" style="font-size:11px; letter-spacing:0.14em;" class="uppercase text-dark hover:opacity-60">Pickleball</a>
       <a href="#" style="font-size:11px; letter-spacing:0.14em;" class="uppercase text-dark hover:opacity-60">Video</a>
@@ -79,16 +117,16 @@
     <img
       src="TLT06022.jpg"
       alt="Hero"
-      class="w-full object-cover"
+      class="w-full object-cover hero-img"
       style="height:560px; display:block;"
     />
-    <!-- White frame border (left ~65% of width) -->
+    <!-- White frame border -->
     <div
-      class="absolute pointer-events-none border-2 border-white"
+      class="absolute pointer-events-none border-2 border-white hero-frame"
       style="top:18px; left:18px; bottom:108px; right:35%;"
     ></div>
 
-    <!-- Bottom-left: Houseplant logo icon -->
+    <!-- Bottom-left logo icon -->
     <div class="absolute text-white" style="bottom:30px; left:24px; opacity:0.85;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H4a1 1 0 01-1-1V10.5z"/>
@@ -96,13 +134,13 @@
       </svg>
     </div>
 
-    <!-- Hero text — sits below frame bottom edge -->
-    <div class="absolute text-white" style="bottom:52px; left:52px;">
+    <!-- Hero text -->
+    <div class="absolute text-white hero-text" style="bottom:52px; left:52px;">
       <h1 style="font-size:38px; font-weight:700; font-style:italic; line-height:1.05; letter-spacing:-0.01em;">Hội thao mùa xuân</h1>
     </div>
 
-    <!-- Shop Now — same vertical band as "New!" text -->
-    <a href="#" class="absolute flex items-center gap-2 text-white hover:opacity-70" style="bottom:62px; right:34px; font-size:12px; letter-spacing:0.16em;">
+    <!-- Explore Now -->
+    <a href="#" class="absolute flex items-center gap-2 text-white hover:opacity-70 hero-btn" style="bottom:62px; right:34px; font-size:12px; letter-spacing:0.16em;">
       <span class="uppercase">Explore Now</span>
       <span style="font-size:20px; line-height:1;">→</span>
     </a>
@@ -120,24 +158,23 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ NEW ARRIVALS ═══════════════════════ -->
-  <section class="bg-cream" style="padding: 40px 32px;">
-    <div class="flex gap-6">
+  <!-- ═══════════════════════ RECENT ACTIVITIES ═══════════════════════ -->
+  <section class="bg-cream activities-section" style="padding: 40px 32px;">
+    <div class="flex gap-6 activities-outer">
 
       <!-- Left label column -->
-      <div style="flex-shrink:0; width:160px;">
+      <div class="activities-label" style="flex-shrink:0; width:160px;">
         <h2 style="font-size:28px; font-weight:800; line-height:1.05; letter-spacing:-0.01em;" class="uppercase">RECENT<br>ACTIVITIES</h2>
         <p style="font-size:11.5px; margin-top:14px; line-height:1.55; opacity:0.8;">New pieces, same great taste. Take a look — something fresh just landed.</p>
       </div>
 
       <!-- Product cards -->
-      <div class="flex gap-0 flex-1">
+      <div class="flex gap-0 flex-1 activities-cards">
 
-        <!-- Product 1: The Aprés Everything Set -->
-        <div class="flex-1 relative" style="border-right:1px solid #d9d4c3;">
-          <!-- NEW badge -->
+        <!-- Card 1 -->
+        <div class="flex-1 relative activity-card" style="border-right:1px solid #d9d4c3;">
           <div style="position:absolute; top:8px; left:8px; z-index:10; background:#2a6644; color:white; font-size:8px; font-weight:700; letter-spacing:0.18em; padding:2px 5px;" class="uppercase">New</div>
-          <div style="background:#f0eddf; padding:8px; aspect-ratio:3/4; overflow:hidden;">
+          <div class="card-img-wrap" style="background:#f0eddf; padding:8px; aspect-ratio:3/4; overflow:hidden;">
             <img src="TLT06109.jpg" alt="Lễ khai mạc" style="width:100%; height:100%; object-fit:cover;" />
           </div>
           <div style="padding:10px 10px 14px; display:flex; align-items:center; justify-content:space-between;">
@@ -146,10 +183,10 @@
           </div>
         </div>
 
-        <!-- Product 2: Smoke the Slopes Long Sleeve -->
-        <div class="flex-1 relative" style="border-right:1px solid #d9d4c3;">
+        <!-- Card 2 -->
+        <div class="flex-1 relative activity-card" style="border-right:1px solid #d9d4c3;">
           <div style="position:absolute; top:8px; left:8px; z-index:10; background:#2a6644; color:white; font-size:8px; font-weight:700; letter-spacing:0.18em; padding:2px 5px;" class="uppercase">New</div>
-          <div style="background:#f0eddf; padding:8px; aspect-ratio:3/4; overflow:hidden;">
+          <div class="card-img-wrap" style="background:#f0eddf; padding:8px; aspect-ratio:3/4; overflow:hidden;">
             <img src="TLT06517.jpg" alt="Bóng đá" style="width:100%; height:100%; object-fit:cover;" />
           </div>
           <div style="padding:10px 10px 14px; display:flex; align-items:center; justify-content:space-between;">
@@ -158,10 +195,10 @@
           </div>
         </div>
 
-        <!-- Product 3: Houseplant Hoodie in Green -->
-        <div class="flex-1 relative">
+        <!-- Card 3 -->
+        <div class="flex-1 relative activity-card">
           <div style="position:absolute; top:8px; left:8px; z-index:10; background:#2a6644; color:white; font-size:8px; font-weight:700; letter-spacing:0.18em; padding:2px 5px;" class="uppercase">New</div>
-          <div style="background:#f0eddf; padding:8px; aspect-ratio:3/4; overflow:hidden;">
+          <div class="card-img-wrap" style="background:#f0eddf; padding:8px; aspect-ratio:3/4; overflow:hidden;">
             <img src="TLT07027.jpg" alt="Pickleball" style="width:100%; height:100%; object-fit:cover;" />
           </div>
           <div style="padding:10px 10px 14px; display:flex; align-items:center; justify-content:space-between;">
@@ -174,18 +211,19 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ SCENT SECTION ═══════════════════════ -->
-  <section style="background-color:#160707;" class="flex">
+  <!-- ═══════════════════════ DARK SPLIT SECTION ═══════════════════════ -->
+  <section style="background-color:#160707;" class="flex dark-section">
     <!-- Left image -->
-    <div style="width:50%; flex-shrink:0;">
+    <div class="dark-section-img-wrap" style="width:50%; flex-shrink:0;">
       <img
         src="TLT07029.jpg"
         alt="Hội thao mừng xuân"
+        class="dark-section-img"
         style="width:100%; height:100%; object-fit:cover; display:block; min-height:400px;"
       />
     </div>
     <!-- Right text -->
-    <div class="flex items-center justify-center" style="width:50%; padding:60px 48px;">
+    <div class="flex items-center justify-center dark-section-text" style="width:50%; padding:60px 48px;">
       <div style="max-width:340px;">
         <h2 style="font-size:28px; font-weight:800; color:white; line-height:1.15; letter-spacing:0.03em; text-transform:uppercase;">Hội thao mừng xuân</h2>
         <p style="font-size:12px; color:white; margin-top:16px; opacity:0.8; line-height:1.6;">Hội thao chào xuân Bính Ngọ, chuỗi hoạt động hướng tới Kỷ niệm 25 năm thành lập Tập đoàn</p>
@@ -195,10 +233,9 @@
   </section>
 
   <!-- ═══════════════════════ CATEGORIES ═══════════════════════ -->
-  <section style="background-color:#160707;" class="grid grid-cols-3">
+  <section style="background-color:#160707;" class="grid grid-cols-3 categories-grid">
 
-    <!-- 01 Furniture -->
-    <div class="relative" style="border-right:1px solid #3d1a1a; min-height:380px;">
+    <div class="relative category-tile" style="border-right:1px solid #3d1a1a; min-height:380px;">
       <img src="TLT07071.jpg" alt="Khai mạc" style="width:100%; height:100%; object-fit:cover; display:block; opacity:0.5;" />
       <span class="absolute text-white" style="top:16px; left:16px; font-size:11px; opacity:0.55;">01</span>
       <div class="absolute flex items-end justify-between" style="bottom:0; left:0; right:0; padding:20px 20px 22px;">
@@ -207,8 +244,7 @@
       </div>
     </div>
 
-    <!-- 02 Ashtrays -->
-    <div class="relative" style="border-right:1px solid #3d1a1a; min-height:380px;">
+    <div class="relative category-tile" style="border-right:1px solid #3d1a1a; min-height:380px;">
       <img src="TLT06123.jpg" alt="Bóng đá" style="width:100%; height:100%; object-fit:cover; display:block; opacity:0.5;" />
       <span class="absolute text-white" style="top:16px; left:16px; font-size:11px; opacity:0.55;">02</span>
       <div class="absolute flex items-end justify-between" style="bottom:0; left:0; right:0; padding:20px 20px 22px;">
@@ -217,8 +253,7 @@
       </div>
     </div>
 
-    <!-- 03 By Seth -->
-    <div class="relative" style="min-height:380px;">
+    <div class="relative category-tile" style="min-height:380px;">
       <img src="TLT06869.jpg" alt="Pickleball" style="width:100%; height:100%; object-fit:cover; display:block; opacity:0.5;" />
       <span class="absolute text-white" style="top:16px; left:16px; font-size:11px; opacity:0.55;">03</span>
       <div class="absolute flex items-end justify-between" style="bottom:0; left:0; right:0; padding:20px 20px 22px;">
@@ -230,17 +265,16 @@
   </section>
 
   <!-- ═══════════════════════ NEWSLETTER SPACER ═══════════════════════ -->
-  <section class="bg-cream" style="min-height:220px; display:flex; align-items:center; justify-content:flex-end; padding:40px 32px;">
-    <!-- Appears mostly blank / newsletter area in reference -->
+  <section class="bg-cream" style="min-height:120px; display:flex; align-items:center; justify-content:flex-end; padding:40px 32px;">
     <span style="font-size:11px; opacity:0.3;">)</span>
   </section>
 
   <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
   <footer class="bg-cream" style="padding:0 32px 40px; border-top:1px solid #BDB498;">
-    <div class="flex justify-between">
+    <div class="flex justify-between footer-inner">
 
       <!-- Left: nav links -->
-      <div style="width:55%;">
+      <div class="footer-left" style="width:55%;">
         <a href="#" class="block" style="padding:12px 0; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-bottom:1px solid #BDB498;">Houseplant Drinks</a>
         <a href="#" class="block" style="padding:12px 0; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-bottom:1px solid #BDB498;">Contact Us</a>
         <a href="#" class="block" style="padding:12px 0; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-bottom:1px solid #BDB498;">Newsletter Sign-Up</a>
@@ -251,10 +285,8 @@
       </div>
 
       <!-- Right: social icons + legal -->
-      <div class="flex flex-col items-end justify-between" style="padding-top:12px;">
-        <!-- Social icons -->
+      <div class="flex flex-col items-end justify-between footer-right" style="padding-top:12px;">
         <div class="flex gap-4" style="color:#321e1e;">
-          <!-- Instagram -->
           <a href="#">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#321e1e" stroke-width="1.5">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -262,22 +294,18 @@
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-width="2"/>
             </svg>
           </a>
-          <!-- Twitter/X -->
           <a href="#">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#321e1e" stroke-width="1.5">
               <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
             </svg>
           </a>
-          <!-- Facebook -->
           <a href="#">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#321e1e" stroke-width="1.5">
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
             </svg>
           </a>
         </div>
-
-        <!-- Legal links -->
-        <div style="text-align:right; margin-top:24px;">
+        <div class="footer-legal" style="text-align:right; margin-top:24px;">
           <p style="font-size:9.5px; opacity:0.7; margin-bottom:3px;">Managing Data | Privacy Preferences</p>
           <p style="font-size:9.5px; opacity:0.7; margin-bottom:3px;">Do Not Sell My Personal Information</p>
           <p style="font-size:9.5px; opacity:0.7;">Interest-Based Ads</p>
