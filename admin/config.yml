@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-site_url: https://tourmaline-fox-dc1cc1.netlify.app
+site_url: https://pacific-sport.netlify.app
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
