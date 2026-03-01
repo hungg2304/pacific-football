@@ -1,0 +1,35 @@
+{
+  "hero_image": "/TLT06022.jpg",
+  "hero_heading": "Hội thao mùa xuân",
+  "hero_button": "Explore Now",
+  "nav_links": [
+    { "label": "Football", "url": "#" },
+    { "label": "Pickleball", "url": "#" },
+    { "label": "Video", "url": "#" },
+    { "label": "Image", "url": "#" }
+  ],
+  "dark_image": "/TLT07029.jpg",
+  "dark_heading": "Hội thao mừng xuân",
+  "dark_body": "Hội thao chào xuân Bính Ngọ, chuỗi hoạt động hướng tới Kỷ niệm 25 năm thành lập Tập đoàn",
+  "dark_button": "Explore Now",
+  "cat1_title": "Khai mạc",
+  "cat1_image": "/TLT07071.jpg",
+  "cat1_slug": "khai-mac",
+  "cat2_title": "Bóng đá",
+  "cat2_image": "/TLT06123.jpg",
+  "cat2_slug": "bong-da",
+  "cat3_title": "Pickleball",
+  "cat3_image": "/TLT06869.jpg",
+  "cat3_slug": "pickleball",
+  "social": {
+    "instagram": "#",
+    "twitter": "#",
+    "facebook": "#"
+  },
+  "footer_links": [
+    { "label": "Liên hệ", "url": "#" },
+    { "label": "Đăng ký nhận tin", "url": "#" },
+    { "label": "Về chúng tôi", "url": "#" },
+    { "label": "Chính sách bảo mật", "url": "#" }
+  ]
+}

@@ -21,3 +21,47 @@ collections:
         required: false
         field: { label: "Ảnh", name: "image", widget: "image" }
       - { label: "Nội dung", name: "body", widget: "markdown" }
+
+  - name: "homepage"
+    label: "Trang chủ"
+    files:
+      - name: "homepage"
+        label: "Cài đặt trang chủ"
+        file: "content/homepage.json"
+        format: "json"
+        fields:
+          - { label: "Ảnh hero", name: "hero_image", widget: "image" }
+          - { label: "Tiêu đề hero", name: "hero_heading", widget: "string" }
+          - { label: "Nút hero", name: "hero_button", widget: "string" }
+          - label: "Điều hướng"
+            name: "nav_links"
+            widget: "list"
+            fields:
+              - { label: "Nhãn", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - { label: "Ảnh dark section", name: "dark_image", widget: "image" }
+          - { label: "Tiêu đề dark section", name: "dark_heading", widget: "string" }
+          - { label: "Nội dung dark section", name: "dark_body", widget: "text" }
+          - { label: "Nút dark section", name: "dark_button", widget: "string" }
+          - { label: "Tên danh mục 1", name: "cat1_title", widget: "string" }
+          - { label: "Ảnh danh mục 1", name: "cat1_image", widget: "image" }
+          - { label: "Slug danh mục 1", name: "cat1_slug", widget: "string" }
+          - { label: "Tên danh mục 2", name: "cat2_title", widget: "string" }
+          - { label: "Ảnh danh mục 2", name: "cat2_image", widget: "image" }
+          - { label: "Slug danh mục 2", name: "cat2_slug", widget: "string" }
+          - { label: "Tên danh mục 3", name: "cat3_title", widget: "string" }
+          - { label: "Ảnh danh mục 3", name: "cat3_image", widget: "image" }
+          - { label: "Slug danh mục 3", name: "cat3_slug", widget: "string" }
+          - label: "Mạng xã hội"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Instagram", name: "instagram", widget: "string" }
+              - { label: "Twitter", name: "twitter", widget: "string" }
+              - { label: "Facebook", name: "facebook", widget: "string" }
+          - label: "Liên kết footer"
+            name: "footer_links"
+            widget: "list"
+            fields:
+              - { label: "Nhãn", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
