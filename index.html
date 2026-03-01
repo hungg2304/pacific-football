@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacific Sports</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#f4f1e0',
+            dark: '#321e1e',
+            darker: '#160707',
+            'hp-border': '#BDB498',
+            star: '#ffa364',
+            sale: '#ff6429',
+            grey: '#9a9a9a',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f1e0;
+      color: #321e1e;
+      font-size: 14px;
+      line-height: 1.15;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    .line-through-price { text-decoration: line-through; color: #9a9a9a; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════ HEADER ═══════════════════════ -->
+  <header>
+    <!-- Top dark logo bar -->
+    <div style="background-color: #160707;" class="flex items-center justify-between px-5 py-2">
+      <div class="w-14"></div>
+      <!-- Logo -->
+      <div class="flex items-center gap-1.5 text-white">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H4a1 1 0 01-1-1V10.5z"/>
+          <path d="M9 22V13h6v9"/>
+        </svg>
+        <span style="font-size:11px; letter-spacing:0.22em; font-weight:500;" class="uppercase text-white">Pacific Sports</span>
+      </div>
+      <!-- Icons -->
+      <div class="flex items-center gap-3 text-white">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Navigation bar -->
+    <nav class="bg-cream flex justify-center gap-10 py-2.5">
+      <a href="#" style="font-size:11px; letter-spacing:0.14em;" class="uppercase text-dark hover:opacity-60">Football</a>
+      <a href="#" style="font-size:11px; letter-spacing:0.14em;" class="uppercase text-dark hover:opacity-60">Pickleball</a>
+      <a href="#" style="font-size:11px; letter-spacing:0.14em;" class="uppercase text-dark hover:opacity-60">Video</a>
+      <a href="#" style="font-size:11px; letter-spacing:0.14em;" class="uppercase text-dark hover:opacity-60">Image</a>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section class="relative overflow-hidden" style="background-color:#7a6550;">
+    <img
+      src="https://placehold.co/1280x560/8b7060/c9b89a?text=%20"
+      alt="Hero"
+      class="w-full object-cover"
+      style="height:560px; display:block;"
+    />
+    <!-- White frame border (left ~65% of width) -->
+    <div
+      class="absolute pointer-events-none border-2 border-white"
+      style="top:18px; left:18px; bottom:108px; right:35%;"
+    ></div>
+
+    <!-- Bottom-left: Houseplant logo icon -->
+    <div class="absolute text-white" style="bottom:30px; left:24px; opacity:0.85;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H4a1 1 0 01-1-1V10.5z"/>
+        <path d="M9 22V13h6v9"/>
+      </svg>
+    </div>
+
+    <!-- Hero text — sits below frame bottom edge -->
+    <div class="absolute text-white" style="bottom:52px; left:52px;">
+      <p style="font-size:13px; margin-bottom:5px; font-weight:400;">New!</p>
+      <h1 style="font-size:38px; font-weight:700; font-style:italic; line-height:1.05; letter-spacing:-0.01em;">Gloopy Rugs</h1>
+    </div>
+
+    <!-- Shop Now — same vertical band as "New!" text -->
+    <a href="#" class="absolute flex items-center gap-2 text-white hover:opacity-70" style="bottom:62px; right:34px; font-size:12px; letter-spacing:0.16em;">
+      <span class="uppercase">Shop Now</span>
+      <span style="font-size:20px; line-height:1;">→</span>
+    </a>
+
+    <!-- Carousel dots -->
+    <div class="absolute flex gap-1.5" style="bottom:14px; left:50%; transform:translateX(-50%);">
+      <div class="rounded-full bg-white" style="width:6px;height:6px;opacity:0.9;"></div>
+      <div class="rounded-full bg-white" style="width:6px;height:6px;opacity:0.35;"></div>
+      <div class="rounded-full bg-white" style="width:6px;height:6px;opacity:0.35;"></div>
+    </div>
+
+    <!-- Carousel progress bar -->
+    <div class="absolute" style="bottom:0; left:0; right:0; height:3px; background:rgba(255,255,255,0.18);">
+      <div style="width:33%; height:100%; background:rgba(255,255,255,0.85);"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ NEW ARRIVALS ═══════════════════════ -->
+  <section class="bg-cream" style="padding: 40px 32px;">
+    <div class="flex gap-6">
+
+      <!-- Left label column -->
+      <div style="flex-shrink:0; width:160px;">
+        <h2 style="font-size:28px; font-weight:800; line-height:1.05; letter-spacing:-0.01em;" class="uppercase">RECENT<br>ACTIVITIES</h2>
+        <p style="font-size:11.5px; margin-top:14px; line-height:1.55; opacity:0.8;">New pieces, same great taste. Take a look — something fresh just landed.</p>
+      </div>
+
+      <!-- Product cards -->
+      <div class="flex gap-0 flex-1">
+
+        <!-- Product 1: The Aprés Everything Set -->
+        <div class="flex-1 relative" style="border-right:1px solid #d9d4c3;">
+          <!-- NEW badge -->
+          <div style="position:absolute; top:8px; left:8px; z-index:10; background:#2a6644; color:white; font-size:8px; font-weight:700; letter-spacing:0.18em; padding:2px 5px;" class="uppercase">New</div>
+          <div style="background:#f0eddf; padding:8px; aspect-ratio:3/4; overflow:hidden;">
+            <img src="https://placehold.co/280x380/7a96bc/f4f1e0?text=%20" alt="The Aprés Everything Set" style="width:100%; height:100%; object-fit:cover;" />
+          </div>
+          <div style="padding:10px 10px 14px;">
+            <!-- Color swatches -->
+            <div class="flex gap-1 mb-2">
+              <div style="width:11px;height:11px;border-radius:50%;background:#151928;"></div>
+              <div style="width:11px;height:11px;border-radius:50%;background:#3a5a80;"></div>
+              <div style="width:11px;height:11px;border-radius:50%;background:#3d3030;"></div>
+              <div style="width:11px;height:11px;border-radius:50%;background:#c8b050;"></div>
+            </div>
+            <p style="font-size:11.5px; font-weight:500; margin-bottom:5px;">The Aprés Everything Set</p>
+            <div class="flex items-center gap-2">
+              <span class="line-through-price" style="font-size:11px;">$290</span>
+              <span style="font-size:11px; color:#ff6429; font-weight:600;">$215</span>
+              <a href="#" style="font-size:9px; letter-spacing:0.16em; margin-left:auto;" class="uppercase">Explore All</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: Smoke the Slopes Long Sleeve -->
+        <div class="flex-1 relative" style="border-right:1px solid #d9d4c3;">
+          <div style="position:absolute; top:8px; left:8px; z-index:10; background:#2a6644; color:white; font-size:8px; font-weight:700; letter-spacing:0.18em; padding:2px 5px;" class="uppercase">New</div>
+          <div style="background:#f0eddf; padding:8px; aspect-ratio:3/4; overflow:hidden;">
+            <img src="https://placehold.co/280x380/e2deca/8a8068?text=%20" alt="Smoke the Slopes Long Sleeve Crewneck" style="width:100%; height:100%; object-fit:cover;" />
+          </div>
+          <div style="padding:10px 10px 14px;">
+            <p style="font-size:11.5px; font-weight:500; margin-bottom:5px;">Smoke the Slopes Long Sleeve Crewneck</p>
+            <div class="flex items-center gap-2">
+              <span style="font-size:11px;">$75</span>
+              <a href="#" style="font-size:9px; letter-spacing:0.16em; margin-left:auto;" class="uppercase">Explore All</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: Houseplant Hoodie in Green -->
+        <div class="flex-1 relative">
+          <div style="position:absolute; top:8px; left:8px; z-index:10; background:#2a6644; color:white; font-size:8px; font-weight:700; letter-spacing:0.18em; padding:2px 5px;" class="uppercase">New</div>
+          <div style="background:#f0eddf; padding:8px; aspect-ratio:3/4; overflow:hidden;">
+            <img src="https://placehold.co/280x380/2e5c28/f4f1e0?text=%20" alt="Houseplant Hoodie in Green" style="width:100%; height:100%; object-fit:cover;" />
+          </div>
+          <div style="padding:10px 10px 14px;">
+            <p style="font-size:11.5px; font-weight:500; margin-bottom:5px;">Houseplant Hoodie in Green</p>
+            <div class="flex items-center gap-2">
+              <span style="font-size:11px; color:#ffa364;">9.0 ★★★★★</span>
+              <span style="font-size:11px; margin-left:auto;">$95</span>
+              <a href="#" style="font-size:9px; letter-spacing:0.16em;" class="uppercase">Explore All</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SCENT SECTION ═══════════════════════ -->
+  <section style="background-color:#160707;" class="flex">
+    <!-- Left image -->
+    <div style="width:50%; flex-shrink:0;">
+      <img
+        src="https://placehold.co/640x480/1e0e0e/3a2020?text=%20"
+        alt="Seth Rogen with Houseplant scent"
+        style="width:100%; height:100%; object-fit:cover; display:block; min-height:400px;"
+      />
+    </div>
+    <!-- Right text -->
+    <div class="flex items-center justify-center" style="width:50%; padding:60px 48px;">
+      <div style="max-width:340px;">
+        <h2 style="font-size:28px; font-weight:800; color:white; line-height:1.15; letter-spacing:0.03em; text-transform:uppercase;">From Grasse, To Your Living Room.</h2>
+        <p style="font-size:12px; color:white; margin-top:16px; opacity:0.8; line-height:1.6;">Scents developed by Seth in the fragrance capital of the world.</p>
+        <button style="margin-top:24px; padding:10px 22px; border:1px solid white; color:white; font-size:10px; letter-spacing:0.18em; background:transparent; cursor:pointer; text-transform:uppercase;">Explore Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CATEGORIES ═══════════════════════ -->
+  <section style="background-color:#160707;" class="grid grid-cols-3">
+
+    <!-- 01 Furniture -->
+    <div class="relative" style="border-right:1px solid #3d1a1a; min-height:380px;">
+      <img src="https://placehold.co/440x380/160707/2a1010?text=%20" alt="Furniture" style="width:100%; height:100%; object-fit:cover; display:block; opacity:0.5;" />
+      <span class="absolute text-white" style="top:16px; left:16px; font-size:11px; opacity:0.55;">01</span>
+      <div class="absolute flex items-end justify-between" style="bottom:0; left:0; right:0; padding:20px 20px 22px;">
+        <h3 style="font-size:22px; font-weight:800; color:white; letter-spacing:0.05em; text-transform:uppercase;">Furniture</h3>
+        <button style="width:38px; height:38px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.7); color:white; background:transparent; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; flex-shrink:0;">→</button>
+      </div>
+    </div>
+
+    <!-- 02 Ashtrays -->
+    <div class="relative" style="border-right:1px solid #3d1a1a; min-height:380px;">
+      <img src="https://placehold.co/440x380/160707/2a1010?text=%20" alt="Ashtrays" style="width:100%; height:100%; object-fit:cover; display:block; opacity:0.5;" />
+      <span class="absolute text-white" style="top:16px; left:16px; font-size:11px; opacity:0.55;">02</span>
+      <div class="absolute flex items-end justify-between" style="bottom:0; left:0; right:0; padding:20px 20px 22px;">
+        <h3 style="font-size:22px; font-weight:800; color:white; letter-spacing:0.05em; text-transform:uppercase;">Ashtrays</h3>
+        <button style="width:38px; height:38px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.7); color:white; background:transparent; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; flex-shrink:0;">→</button>
+      </div>
+    </div>
+
+    <!-- 03 By Seth -->
+    <div class="relative" style="min-height:380px;">
+      <img src="https://placehold.co/440x380/160707/2a1010?text=%20" alt="By Seth" style="width:100%; height:100%; object-fit:cover; display:block; opacity:0.5;" />
+      <span class="absolute text-white" style="top:16px; left:16px; font-size:11px; opacity:0.55;">03</span>
+      <div class="absolute flex items-end justify-between" style="bottom:0; left:0; right:0; padding:20px 20px 22px;">
+        <h3 style="font-size:22px; font-weight:800; color:white; letter-spacing:0.05em; text-transform:uppercase;">By Seth</h3>
+        <button style="width:38px; height:38px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.7); color:white; background:transparent; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; flex-shrink:0;">→</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════ NEWSLETTER SPACER ═══════════════════════ -->
+  <section class="bg-cream" style="min-height:220px; display:flex; align-items:center; justify-content:flex-end; padding:40px 32px;">
+    <!-- Appears mostly blank / newsletter area in reference -->
+    <span style="font-size:11px; opacity:0.3;">)</span>
+  </section>
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="bg-cream" style="padding:0 32px 40px; border-top:1px solid #BDB498;">
+    <div class="flex justify-between">
+
+      <!-- Left: nav links -->
+      <div style="width:55%;">
+        <a href="#" class="block" style="padding:12px 0; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-bottom:1px solid #BDB498;">Houseplant Drinks</a>
+        <a href="#" class="block" style="padding:12px 0; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-bottom:1px solid #BDB498;">Contact Us</a>
+        <a href="#" class="block" style="padding:12px 0; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-bottom:1px solid #BDB498;">Newsletter Sign-Up</a>
+        <a href="#" class="block" style="padding:12px 0; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-bottom:1px solid #BDB498;">Accessibility</a>
+        <a href="#" class="block" style="padding:12px 0; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-bottom:1px solid #BDB498;">FAQs</a>
+        <a href="#" class="block" style="padding:12px 0; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; border-bottom:1px solid #BDB498;">Privacy Policy</a>
+        <a href="#" class="block" style="padding:12px 0; font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;">Terms of Service</a>
+      </div>
+
+      <!-- Right: social icons + legal -->
+      <div class="flex flex-col items-end justify-between" style="padding-top:12px;">
+        <!-- Social icons -->
+        <div class="flex gap-4" style="color:#321e1e;">
+          <!-- Instagram -->
+          <a href="#">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#321e1e" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-width="2"/>
+            </svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#321e1e" stroke-width="1.5">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#321e1e" stroke-width="1.5">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Legal links -->
+        <div style="text-align:right; margin-top:24px;">
+          <p style="font-size:9.5px; opacity:0.7; margin-bottom:3px;">Managing Data | Privacy Preferences</p>
+          <p style="font-size:9.5px; opacity:0.7; margin-bottom:3px;">Do Not Sell My Personal Information</p>
+          <p style="font-size:9.5px; opacity:0.7;">Interest-Based Ads</p>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
