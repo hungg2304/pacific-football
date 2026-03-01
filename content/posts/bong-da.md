@@ -1,6 +1,6 @@
 ---
 title: Bóng đá
-cover: /TLT06517.jpg
+cover: /images/uploads/tlt06109.jpg
 gallery:
   - /TLT06517.jpg
 ---
