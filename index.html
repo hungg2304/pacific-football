@@ -38,13 +38,30 @@
     a { text-decoration: none; color: inherit; }
     .line-through-price { text-decoration: line-through; color: #9a9a9a; }
 
+    /* Stats marquee */
+    .marquee-track { overflow: hidden; }
+    .marquee-inner {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      width: max-content;
+      animation: marquee-scroll 30s linear infinite;
+    }
+    .marquee-inner:hover { animation-play-state: paused; }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
     @media (max-width: 640px) {
       /* Hero */
-      .hero-img { height: 260px !important; }
-      .hero-frame { display: none !important; }
-      .hero-text { bottom: 40px !important; left: 16px !important; right: 90px; }
-      .hero-text h1 { font-size: 22px !important; }
-      .hero-btn { bottom: 44px !important; right: 12px !important; font-size: 10px !important; }
+      .hero-section { min-height: 100svh !important; }
+      .hero-avatar-stack { display: none; }
+      .hero-top-content { padding: 0 16px !important; }
+      .hero-main-content { padding: 0 16px 52px !important; }
+      .hero-bottom-row { flex-direction: column !important; gap: 20px !important; align-items: flex-start !important; }
+      .hero-left, .hero-right { width: 100% !important; }
+      .hero-right p { text-align: left !important; font-size: 13px !important; }
 
       /* Activities */
       .activities-section { padding: 24px 16px !important; }
@@ -116,50 +133,109 @@
   </header>
 
   <!-- ═══════════════════════ HERO ═══════════════════════ -->
-  <section class="relative overflow-hidden" style="background-color:#7a6550;">
-    <img
-      id="hero-img"
-      src="TLT06022.jpg"
-      alt="Hero"
-      class="w-full object-cover hero-img"
-      style="height:560px; display:block;"
-    />
-    <!-- White frame border -->
-    <div
-      class="absolute pointer-events-none border-2 border-white hero-frame"
-      style="top:18px; left:18px; bottom:108px; right:35%;"
-    ></div>
+  <section class="hero-section" style="min-height:100vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;position:relative;">
 
-    <!-- Bottom-left logo icon -->
-    <div class="absolute text-white" style="bottom:30px; left:24px; opacity:0.85;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H4a1 1 0 01-1-1V10.5z"/>
-        <path d="M9 22V13h6v9"/>
-      </svg>
+    <!-- Background image + dark overlay -->
+    <div style="position:absolute;inset:0;">
+      <img id="hero-img" src="TLT06022.jpg" alt="Hero" style="width:100%;height:100%;object-fit:cover;display:block;" />
+      <div style="position:absolute;inset:0;background:rgba(0,0,0,0.44);"></div>
     </div>
 
-    <!-- Hero text -->
-    <div class="absolute text-white hero-text" style="bottom:52px; left:52px;">
-      <h1 id="hero-heading" style="font-size:38px; font-weight:700; font-style:italic; line-height:1.05; letter-spacing:-0.01em;">Hội thao mùa xuân</h1>
+    <!-- Avatar stack + Stats marquee -->
+    <div class="hero-top-content" style="position:relative;z-index:10;width:100%;padding:0 4rem;margin-bottom:1.5rem;">
+
+      <!-- Overlapping avatar circles -->
+      <div class="hero-avatar-stack" style="display:flex;margin-bottom:1rem;">
+        <img src="TLT07071.jpg" alt="" style="width:50px;height:50px;border-radius:50%;border:2.5px solid #f4f1e0;object-fit:cover;object-position:center top;position:relative;z-index:5;" />
+        <img src="TLT06109.jpg" alt="" style="width:50px;height:50px;border-radius:50%;border:2.5px solid #f4f1e0;object-fit:cover;object-position:center top;margin-left:-12px;position:relative;z-index:4;" />
+        <img src="TLT06517.jpg" alt="" style="width:50px;height:50px;border-radius:50%;border:2.5px solid #f4f1e0;object-fit:cover;object-position:center top;margin-left:-12px;position:relative;z-index:3;" />
+        <img src="TLT07027.jpg" alt="" style="width:50px;height:50px;border-radius:50%;border:2.5px solid #f4f1e0;object-fit:cover;object-position:center top;margin-left:-12px;position:relative;z-index:2;" />
+        <img src="TLT06869.jpg" alt="" style="width:50px;height:50px;border-radius:50%;border:2.5px solid #f4f1e0;object-fit:cover;object-position:center top;margin-left:-12px;position:relative;z-index:1;" />
+      </div>
+
+      <!-- Scrolling stats ticker -->
+      <div class="marquee-track" style="border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.28);padding:9px 0;">
+        <div class="marquee-inner">
+          <!-- set 1 -->
+          <div style="display:flex;align-items:center;gap:0.5rem;white-space:nowrap;flex-shrink:0;">
+            <span style="font-family:monospace;font-weight:700;color:#ffa364;font-size:0.78rem;letter-spacing:0.08em;">3</span>
+            <span style="font-family:monospace;font-size:0.68rem;color:rgba(255,255,255,0.62);text-transform:uppercase;letter-spacing:0.16em;">Môn thi đấu</span>
+            <span style="font-size:0.85rem;">⚽</span>
+          </div>
+          <span style="width:1px;height:14px;background:rgba(255,255,255,0.18);display:inline-block;flex-shrink:0;"></span>
+          <div style="display:flex;align-items:center;gap:0.5rem;white-space:nowrap;flex-shrink:0;">
+            <span style="font-family:monospace;font-weight:700;color:#ffa364;font-size:0.78rem;letter-spacing:0.08em;">200+</span>
+            <span style="font-family:monospace;font-size:0.68rem;color:rgba(255,255,255,0.62);text-transform:uppercase;letter-spacing:0.16em;">Thành viên tham gia</span>
+            <span style="font-size:0.85rem;">🏅</span>
+          </div>
+          <span style="width:1px;height:14px;background:rgba(255,255,255,0.18);display:inline-block;flex-shrink:0;"></span>
+          <div style="display:flex;align-items:center;gap:0.5rem;white-space:nowrap;flex-shrink:0;">
+            <span style="font-family:monospace;font-weight:700;color:#ffa364;font-size:0.78rem;letter-spacing:0.08em;">25 năm</span>
+            <span style="font-family:monospace;font-size:0.68rem;color:rgba(255,255,255,0.62);text-transform:uppercase;letter-spacing:0.16em;">Thành lập Pacific</span>
+            <span style="font-size:0.85rem;">🏆</span>
+          </div>
+          <span style="width:1px;height:14px;background:rgba(255,255,255,0.18);display:inline-block;flex-shrink:0;"></span>
+          <div style="display:flex;align-items:center;gap:0.5rem;white-space:nowrap;flex-shrink:0;">
+            <span style="font-family:monospace;font-weight:700;color:#ffa364;font-size:0.78rem;letter-spacing:0.08em;">2026</span>
+            <span style="font-family:monospace;font-size:0.68rem;color:rgba(255,255,255,0.62);text-transform:uppercase;letter-spacing:0.16em;">Hội thao mùa xuân</span>
+            <span style="font-size:0.85rem;">🎉</span>
+          </div>
+          <span style="width:1px;height:14px;background:rgba(255,255,255,0.18);display:inline-block;flex-shrink:0;"></span>
+          <!-- set 2 (duplicate for seamless loop) -->
+          <div style="display:flex;align-items:center;gap:0.5rem;white-space:nowrap;flex-shrink:0;">
+            <span style="font-family:monospace;font-weight:700;color:#ffa364;font-size:0.78rem;letter-spacing:0.08em;">3</span>
+            <span style="font-family:monospace;font-size:0.68rem;color:rgba(255,255,255,0.62);text-transform:uppercase;letter-spacing:0.16em;">Môn thi đấu</span>
+            <span style="font-size:0.85rem;">⚽</span>
+          </div>
+          <span style="width:1px;height:14px;background:rgba(255,255,255,0.18);display:inline-block;flex-shrink:0;"></span>
+          <div style="display:flex;align-items:center;gap:0.5rem;white-space:nowrap;flex-shrink:0;">
+            <span style="font-family:monospace;font-weight:700;color:#ffa364;font-size:0.78rem;letter-spacing:0.08em;">200+</span>
+            <span style="font-family:monospace;font-size:0.68rem;color:rgba(255,255,255,0.62);text-transform:uppercase;letter-spacing:0.16em;">Thành viên tham gia</span>
+            <span style="font-size:0.85rem;">🏅</span>
+          </div>
+          <span style="width:1px;height:14px;background:rgba(255,255,255,0.18);display:inline-block;flex-shrink:0;"></span>
+          <div style="display:flex;align-items:center;gap:0.5rem;white-space:nowrap;flex-shrink:0;">
+            <span style="font-family:monospace;font-weight:700;color:#ffa364;font-size:0.78rem;letter-spacing:0.08em;">25 năm</span>
+            <span style="font-family:monospace;font-size:0.68rem;color:rgba(255,255,255,0.62);text-transform:uppercase;letter-spacing:0.16em;">Thành lập Pacific</span>
+            <span style="font-size:0.85rem;">🏆</span>
+          </div>
+          <span style="width:1px;height:14px;background:rgba(255,255,255,0.18);display:inline-block;flex-shrink:0;"></span>
+          <div style="display:flex;align-items:center;gap:0.5rem;white-space:nowrap;flex-shrink:0;">
+            <span style="font-family:monospace;font-weight:700;color:#ffa364;font-size:0.78rem;letter-spacing:0.08em;">2026</span>
+            <span style="font-family:monospace;font-size:0.68rem;color:rgba(255,255,255,0.62);text-transform:uppercase;letter-spacing:0.16em;">Hội thao mùa xuân</span>
+            <span style="font-size:0.85rem;">🎉</span>
+          </div>
+          <span style="width:1px;height:14px;background:rgba(255,255,255,0.18);display:inline-block;flex-shrink:0;"></span>
+        </div>
+      </div>
     </div>
 
-    <!-- Explore Now -->
-    <a id="hero-btn" href="#" class="absolute flex items-center gap-2 text-white hover:opacity-70 hero-btn" style="bottom:62px; right:34px; font-size:12px; letter-spacing:0.16em;">
-      <span class="uppercase">Explore Now</span>
-      <span style="font-size:20px; line-height:1;">→</span>
-    </a>
+    <!-- Heading + CTA + description -->
+    <div class="hero-main-content" style="position:relative;z-index:10;width:100%;padding:0 4rem 5.5rem;">
+      <div class="hero-bottom-row" style="display:flex;flex-direction:row;align-items:flex-end;gap:3rem;">
 
-    <!-- Carousel dots -->
-    <div class="absolute flex gap-1.5" style="bottom:14px; left:50%; transform:translateX(-50%);">
-      <div class="rounded-full bg-white" style="width:6px;height:6px;opacity:0.9;"></div>
-      <div class="rounded-full bg-white" style="width:6px;height:6px;opacity:0.35;"></div>
-      <div class="rounded-full bg-white" style="width:6px;height:6px;opacity:0.35;"></div>
+        <!-- Left: heading + button -->
+        <div class="hero-left" style="width:50%;display:flex;flex-direction:column;gap:1.5rem;">
+          <h1 id="hero-heading" style="font-size:clamp(2.4rem,5.5vw,4.8rem);font-weight:700;color:white;line-height:1.0;letter-spacing:-0.02em;font-style:italic;">
+            Hội thao <span style="color:#ffa364;">mùa</span> <span style="color:#ffa364;">xuân</span><br>
+            <span style="color:white;">— Bính Ngọ 2026</span>
+          </h1>
+          <a id="hero-btn" href="#" style="display:inline-flex;align-items:center;background:#f4f1e0;color:#321e1e;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;width:fit-content;transition:background 0.2s,color 0.2s;">
+            <span style="padding:11px 20px;">Explore Now</span>
+            <span style="border-left:1px solid rgba(50,30,30,0.22);padding:11px 16px;font-size:17px;line-height:1;">→</span>
+          </a>
+        </div>
+
+        <!-- Right: italic description -->
+        <div class="hero-right" style="width:50%;">
+          <p style="font-size:clamp(0.85rem,1.35vw,1.1rem);color:#f4f1e0;font-style:italic;text-align:right;line-height:1.75;opacity:0.88;">
+            Hội thao chào xuân Bính Ngọ, chuỗi hoạt động hướng tới Kỷ niệm 25 năm thành lập Tập đoàn Pacific.
+          </p>
+        </div>
+
+      </div>
     </div>
 
-    <!-- Carousel progress bar -->
-    <div class="absolute" style="bottom:0; left:0; right:0; height:3px; background:rgba(255,255,255,0.18);">
-      <div style="width:33%; height:100%; background:rgba(255,255,255,0.85);"></div>
-    </div>
   </section>
 
   <!-- ═══════════════════════ RECENT ACTIVITIES ═══════════════════════ -->
