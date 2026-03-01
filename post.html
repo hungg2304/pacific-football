@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bài viết</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f4f1e0;
+      color: #321e1e;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    .prose p { margin-bottom: 1em; }
+    .prose h1, .prose h2, .prose h3 { font-weight: 800; margin: 1.2em 0 0.4em; line-height: 1.15; }
+    .prose ul, .prose ol { margin-left: 1.5em; margin-bottom: 1em; }
+    .prose li { margin-bottom: 0.3em; }
+    .prose strong { font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div style="background-color:#160707;" class="flex items-center justify-between px-5 py-2">
+      <a href="index.html" style="font-size:11px; letter-spacing:0.1em; color:white; opacity:0.7;" class="uppercase">← Quay lại</a>
+      <div class="flex items-center gap-1.5 text-white">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 10.5L12 3l9 7.5V21a1 1 0 01-1 1H4a1 1 0 01-1-1V10.5z"/>
+          <path d="M9 22V13h6v9"/>
+        </svg>
+        <span style="font-size:11px; letter-spacing:0.22em; font-weight:500;" class="uppercase text-white">Pacific Sports</span>
+      </div>
+      <div class="w-20"></div>
+    </div>
+  </header>
+
+  <!-- Post content -->
+  <div id="post-container" style="max-width:900px; margin:0 auto; padding:40px 24px 80px;">
+    <p style="opacity:0.4; font-size:13px;">Đang tải...</p>
+  </div>
+
+  <script>
+    // Simple YAML front matter parser
+    function parseFrontMatter(text) {
+      const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+      if (!match) return { meta: {}, body: text };
+      const meta = {};
+      const lines = match[1].split('\n');
+      let i = 0;
+      while (i < lines.length) {
+        const line = lines[i];
+        const keyMatch = line.match(/^(\w+):\s*(.*)/);
+        if (keyMatch) {
+          const key = keyMatch[1];
+          const val = keyMatch[2].trim();
+          if (val === '' || val === null) {
+            const arr = [];
+            i++;
+            while (i < lines.length && /^\s*-\s+/.test(lines[i])) {
+              arr.push(lines[i].replace(/^\s*-\s+/, '').trim());
+              i++;
+            }
+            meta[key] = arr;
+            continue;
+          } else {
+            meta[key] = val.replace(/^["']|["']$/g, '');
+          }
+        }
+        i++;
+      }
+      return { meta, body: match[2] };
+    }
+
+    async function loadPost() {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+      const container = document.getElementById('post-container');
+
+      if (!slug) {
+        container.innerHTML = '<p style="opacity:0.5;">Không tìm thấy bài viết.</p>';
+        return;
+      }
+
+      try {
+        const res = await fetch(`/content/posts/${slug}.md`);
+        if (!res.ok) throw new Error('Not found');
+        const text = await res.text();
+        const { meta, body } = parseFrontMatter(text);
+
+        document.title = (meta.title || 'Bài viết') + ' — Pacific Sports';
+
+        let html = '';
+
+        // Cover image
+        if (meta.cover) {
+          html += `<img src="${meta.cover}" alt="${meta.title || ''}" style="width:100%; max-height:500px; object-fit:cover; margin-bottom:36px;" />`;
+        }
+
+        // Title
+        html += `<h1 style="font-size:36px; font-weight:800; line-height:1.05; letter-spacing:-0.01em; margin-bottom:28px;">${meta.title || ''}</h1>`;
+
+        // Body
+        if (body.trim()) {
+          html += `<div class="prose" style="margin-bottom:48px;">${marked.parse(body)}</div>`;
+        }
+
+        // Gallery
+        if (meta.gallery && meta.gallery.length > 0) {
+          html += `<h2 style="font-size:13px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:16px; opacity:0.6;">Hình ảnh</h2>`;
+          html += `<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:10px;">`;
+          for (const img of meta.gallery) {
+            html += `<img src="${img}" alt="" style="width:100%; aspect-ratio:4/3; object-fit:cover;" />`;
+          }
+          html += `</div>`;
+        }
+
+        container.innerHTML = html;
+      } catch (e) {
+        container.innerHTML = '<p style="opacity:0.4; font-size:13px;">Không tìm thấy bài viết.</p>';
+      }
+    }
+
+    loadPost();
+  </script>
+
+</body>
+</html>
